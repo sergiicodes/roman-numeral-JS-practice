@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Roman Numeral Converter</title>
+    <link rel="stylesheet" href="style.css"></head>
+    <style>
+      /* CSS for centering the form */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="text" id="input" placeholder="Enter a Roman Numeral or an Integer">
+      <button type="button" onclick="convert()">Convert</button>
+    </form>
+    <p id="output"></p>
+    <script>
+      function convert() {
+        const input = document.getElementById("input").value;
+        let output;
+        if (isNaN(input)) {
+          output = romanToInt(input);
+        } else {
+          output = intToRoman(parseInt(input));
+        }
+        document.getElementById("output").innerHTML = output;
+      }
+      
+      function romanToInt(s) {
+        const romans = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+        let result = 0;
+        for (let i = 0; i < s.length; i++) {
+          if (romans[s[i]] < romans[s[i+1]]) {
+            result -= romans[s[i]];
+          } else {
+            result += romans[s[i]];
+          }
+        }
+        return result;
+      }
+      
+      function intToRoman(num) {
+        const romans = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+        const values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+        let result = "";
+        for (let i = 0; i < romans.length; i++) {
+          while (num >= values[i]) {
+            result += romans[i];
+            num -= values[i];
+          }
+        }
+        return result;
+      }
+    </script>
+  </body>
+</html>
