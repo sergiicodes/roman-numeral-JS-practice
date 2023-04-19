@@ -5,6 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
   }
   
   .container {
@@ -26,6 +27,7 @@ body {
     font-size: 1.2em;
     width: 100%;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
   }
   
   button {
@@ -36,4 +38,5 @@ body {
     color: #fff;
     font-size: 1.2em;
     cursor: pointer;
+    font-family: 'Roboto', sans-serif;
   }
